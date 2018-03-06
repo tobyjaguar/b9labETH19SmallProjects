@@ -1,0 +1,10 @@
+//test hashPasswords
+it("Should hash two passwords", function() {
+  var hashedSha3Return = web3.sha3(remit, "abc");
+
+  return contractInstance.hashPasswords.call(remit, "abc", {from: owner})
+  .then(result => {
+    console.log("Result: " + result + "\n" + "Hashed: " + hashedSha3Return);
+  });
+  //end test
+});

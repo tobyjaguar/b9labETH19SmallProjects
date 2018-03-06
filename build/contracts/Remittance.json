@@ -1,0 +1,1612 @@
+{
+  "contract_name": "Remittance",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getBalance",
+      "outputs": [
+        {
+          "name": "_balance",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "onOff",
+          "type": "bool"
+        }
+      ],
+      "name": "runSwitch",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "remitFee",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_remitter",
+          "type": "address"
+        },
+        {
+          "name": "_unhashedPassword",
+          "type": "bytes32"
+        }
+      ],
+      "name": "hashPasswords",
+      "outputs": [
+        {
+          "name": "hashedOutput",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "feeBalance",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "feeWithdraw",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_remittee",
+          "type": "address"
+        },
+        {
+          "name": "_hashedPassword",
+          "type": "bytes32"
+        },
+        {
+          "name": "_duration",
+          "type": "uint256"
+        }
+      ],
+      "name": "setPass",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": true,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_remittee",
+          "type": "address"
+        },
+        {
+          "name": "_unhashedPassword",
+          "type": "bytes32"
+        }
+      ],
+      "name": "withdrawFunds",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "remittees",
+      "outputs": [
+        {
+          "name": "hashedPassword",
+          "type": "bytes32"
+        },
+        {
+          "name": "expirationBlock",
+          "type": "uint256"
+        },
+        {
+          "name": "remitAmount",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "changeOwner",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "balance",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_remitFee",
+          "type": "uint256"
+        }
+      ],
+      "name": "changeRemitFee",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "running",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_remittee",
+          "type": "address"
+        }
+      ],
+      "name": "refund",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_remitFee",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "eRemittee",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "eExpirationBlock",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "eAmount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "eFee",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogSetRemittance",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "eSender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "eRemittee",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "eAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogWithdraw",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "eSender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "eAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogFeeWithdraw",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "eSender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "eRemittee",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "eAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "LogRefund",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "switchSetting",
+          "type": "bool"
+        }
+      ],
+      "name": "LogRunSwitch",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "oldOwner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "LogNewOwner",
+      "type": "event"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b604051602080610ae7833981016040528080519150505b5b5b60008054600160a060020a03191633600160a060020a03161790555b6000805460a060020a60ff021916740100000000000000000000000000000000000000001790555b60028190555b505b610a64806100836000396000f300606060405236156100d85763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166312065fe081146100dd5780632dd9705814610102578063336fb3141461012e578063485e3e991461015357806360b71d4e146101875780636561e6ba146101ac578063711340d0146101d35780637b8f9e28146102015780638268b49f146102375780638da5cb5b1461027a578063a6f9dae1146102a9578063b69ef8a8146102dc578063b76994e614610301578063d85bd5261461032b578063fa89401a14610352575b600080fd5b34156100e857600080fd5b6100f0610385565b60405190815260200160405180910390f35b341561010d57600080fd5b61011a600435151561038c565b604051901515815260200160405180910390f35b341561013957600080fd5b6100f0610420565b60405190815260200160405180910390f35b341561015e57600080fd5b6100f0600160a060020a0360043516602435610426565b60405190815260200160405180910390f35b341561019257600080fd5b6100f0610463565b60405190815260200160405180910390f35b34156101b757600080fd5b61011a610469565b604051901515815260200160405180910390f35b61011a600160a060020a0360043516602435604435610534565b604051901515815260200160405180910390f35b341561020c57600080fd5b61011a600160a060020a0360043516602435610661565b604051901515815260200160405180910390f35b341561024257600080fd5b610256600160a060020a03600435166107c0565b60405192835260208301919091526040808301919091526060909101905180910390f35b341561028557600080fd5b61028d6107e1565b604051600160a060020a03909116815260200160405180910390f35b34156102b457600080fd5b61011a600160a060020a03600435166107f0565b604051901515815260200160405180910390f35b34156102e757600080fd5b6100f061089f565b60405190815260200160405180910390f35b341561030c57600080fd5b61011a6004356108a5565b604051901515815260200160405180910390f35b341561033657600080fd5b61011a6108e9565b604051901515815260200160405180910390f35b341561035d57600080fd5b61011a600160a060020a03600435166108f9565b604051901515815260200160405180910390f35b6001545b90565b6000805433600160a060020a039081169116146103a857600080fd5b6000805474ff0000000000000000000000000000000000000000191660a060020a841515021790557fe149139e745b87d23672d6d1bd3f9160008dc717a946188ef8c5155e4ee6b8453383604051600160a060020a039092168252151560208201526040908101905180910390a15060015b5b919050565b60025481565b60008282604051600160a060020a03929092166c010000000000000000000000000282526014820152603401604051809103902090505b92915050565b60035481565b60008054819033600160a060020a0390811691161461048757600080fd5b60005460a060020a900460ff16151561049f57600080fd5b50600380546000918290556001805482900390559054600160a060020a031681156108fc0282604051600060405180830381858888f1935050505015156104e557600080fd5b7f89bdc19847a2b708945a2b395b8f8be7b0c4bc39b9958d47b23595af959e425d3382604051600160a060020a03909216825260208201526040908101905180910390a1600191505b5b5b5090565b6000805433600160a060020a0390811691161461055057600080fd5b60005460a060020a900460ff16151561056857600080fd5b6000341161057557600080fd5b600160a060020a038416151561058a57600080fd5b82151561059657600080fd5b4380830190106105a557600080fd5b600160a060020a03841660009081526004602052604090819020848155438401600180830191825560028054600380548201905593810180543495860301815582549094019091559054915490547f5f5a416e04c542735c9001478b8c8275ebe6e17e3327ce28b8321afdb737184d938893929190518085600160a060020a0316600160a060020a0316815260200184815260200183815260200182815260200194505050505060405180910390a15060015b5b5b9392505050565b60008054819060a060020a900460ff16151561067c57600080fd5b600160a060020a033316151561069157600080fd5b600160a060020a038416600090815260046020526040812060020154116106b757600080fd5b600160a060020a03841660009081526004602052604090206001015443106106de57600080fd5b6106e83384610426565b600160a060020a0385166000908152600460205260409020541461070b57600080fd5b50600160a060020a038084166000908152600460205260408082206002018054929055909133169082156108fc0290839051600060405180830381858888f19350505050151561075a57600080fd5b6001805482900390557f9207361cc2a04b9c7a06691df1eb87c6a63957ae88bf01d0d18c81e3d1272099338583604051600160a060020a039384168152919092166020820152604080820192909252606001905180910390a1600191505b5b5092915050565b60046020526000908152604090208054600182015460029092015490919083565b600054600160a060020a031681565b6000805433600160a060020a0390811691161461080c57600080fd5b6000547f95a4124b32fadd40e6e63088992a62e3505e61d1683b783d03e575d7c1dfb967903390600160a060020a031684604051600160a060020a03938416815291831660208301529091166040808301919091526060909101905180910390a1506000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a03831617905560015b5b919050565b60015481565b6000805433600160a060020a039081169116146108c157600080fd5b60005460a060020a900460ff1615156108d957600080fd5b50600281905560015b5b5b919050565b60005460a060020a900460ff1681565b60008054819033600160a060020a0390811691161461091757600080fd5b60005460a060020a900460ff16151561092f57600080fd5b600160a060020a0383166000908152600460205260408120600201541161095557600080fd5b600160a060020a0383166000908152600460205260409020600101544390111561097e57600080fd5b50600160a060020a0380831660009081526004602052604080822060020180549083905560018054829003905591549192919091169082156108fc0290839051600060405180830381858888f1935050505015156109db57600080fd5b7fc2b63887a40047a024d87de89972173a52a7d88c77fb3f7979612aa75e4a0f37338483604051600160a060020a039384168152919092166020820152604080820192909252606001905180910390a1600191505b5b5b509190505600a165627a7a7230582008da8697be70cd8cbdaad7c44a327c8b6fd9ae735ea44635e2e66589f956be670029",
+  "networks": {
+    "1519754000070": {
+      "events": {
+        "0x5f5a416e04c542735c9001478b8c8275ebe6e17e3327ce28b8321afdb737184d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eExpirationBlock",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eFee",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogSetRemittance",
+          "type": "event"
+        },
+        "0x9207361cc2a04b9c7a06691df1eb87c6a63957ae88bf01d0d18c81e3d1272099": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogWithdraw",
+          "type": "event"
+        },
+        "0x89bdc19847a2b708945a2b395b8f8be7b0c4bc39b9958d47b23595af959e425d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeeWithdraw",
+          "type": "event"
+        },
+        "0xc2b63887a40047a024d87de89972173a52a7d88c77fb3f7979612aa75e4a0f37": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRefund",
+          "type": "event"
+        },
+        "0xe149139e745b87d23672d6d1bd3f9160008dc717a946188ef8c5155e4ee6b845": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "switchSetting",
+              "type": "bool"
+            }
+          ],
+          "name": "LogRunSwitch",
+          "type": "event"
+        },
+        "0x95a4124b32fadd40e6e63088992a62e3505e61d1683b783d03e575d7c1dfb967": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "oldOwner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewOwner",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x9ddd64f03fd852d7ae1ed1b567240b4e312ada98",
+      "updated_at": 1519756536370
+    },
+    "1519765519170": {
+      "events": {
+        "0x5f5a416e04c542735c9001478b8c8275ebe6e17e3327ce28b8321afdb737184d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eExpirationBlock",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eFee",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogSetRemittance",
+          "type": "event"
+        },
+        "0x9207361cc2a04b9c7a06691df1eb87c6a63957ae88bf01d0d18c81e3d1272099": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogWithdraw",
+          "type": "event"
+        },
+        "0x89bdc19847a2b708945a2b395b8f8be7b0c4bc39b9958d47b23595af959e425d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeeWithdraw",
+          "type": "event"
+        },
+        "0xc2b63887a40047a024d87de89972173a52a7d88c77fb3f7979612aa75e4a0f37": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRefund",
+          "type": "event"
+        },
+        "0xe149139e745b87d23672d6d1bd3f9160008dc717a946188ef8c5155e4ee6b845": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "switchSetting",
+              "type": "bool"
+            }
+          ],
+          "name": "LogRunSwitch",
+          "type": "event"
+        },
+        "0x95a4124b32fadd40e6e63088992a62e3505e61d1683b783d03e575d7c1dfb967": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "oldOwner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewOwner",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x3fb6aa557acf107da6eafb04821b87606154a151",
+      "updated_at": 1519765568738
+    },
+    "1519776154471": {
+      "events": {
+        "0x5f5a416e04c542735c9001478b8c8275ebe6e17e3327ce28b8321afdb737184d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eExpirationBlock",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eFee",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogSetRemittance",
+          "type": "event"
+        },
+        "0x9207361cc2a04b9c7a06691df1eb87c6a63957ae88bf01d0d18c81e3d1272099": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogWithdraw",
+          "type": "event"
+        },
+        "0x89bdc19847a2b708945a2b395b8f8be7b0c4bc39b9958d47b23595af959e425d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeeWithdraw",
+          "type": "event"
+        },
+        "0xc2b63887a40047a024d87de89972173a52a7d88c77fb3f7979612aa75e4a0f37": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRefund",
+          "type": "event"
+        },
+        "0xe149139e745b87d23672d6d1bd3f9160008dc717a946188ef8c5155e4ee6b845": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "switchSetting",
+              "type": "bool"
+            }
+          ],
+          "name": "LogRunSwitch",
+          "type": "event"
+        },
+        "0x95a4124b32fadd40e6e63088992a62e3505e61d1683b783d03e575d7c1dfb967": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "oldOwner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewOwner",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x8a544375ee9208466d654465a1c16dfe2b5b0be7",
+      "updated_at": 1519776181835
+    },
+    "1519867718486": {
+      "events": {
+        "0x5f5a416e04c542735c9001478b8c8275ebe6e17e3327ce28b8321afdb737184d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eExpirationBlock",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eFee",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogSetRemittance",
+          "type": "event"
+        },
+        "0x9207361cc2a04b9c7a06691df1eb87c6a63957ae88bf01d0d18c81e3d1272099": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogWithdraw",
+          "type": "event"
+        },
+        "0x89bdc19847a2b708945a2b395b8f8be7b0c4bc39b9958d47b23595af959e425d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeeWithdraw",
+          "type": "event"
+        },
+        "0xc2b63887a40047a024d87de89972173a52a7d88c77fb3f7979612aa75e4a0f37": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRefund",
+          "type": "event"
+        },
+        "0xe149139e745b87d23672d6d1bd3f9160008dc717a946188ef8c5155e4ee6b845": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "switchSetting",
+              "type": "bool"
+            }
+          ],
+          "name": "LogRunSwitch",
+          "type": "event"
+        },
+        "0x95a4124b32fadd40e6e63088992a62e3505e61d1683b783d03e575d7c1dfb967": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "oldOwner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewOwner",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x6050a88503e9f981d2099c0c7595d7ba0b367e65",
+      "updated_at": 1519867744767
+    },
+    "1519870386323": {
+      "events": {
+        "0x5f5a416e04c542735c9001478b8c8275ebe6e17e3327ce28b8321afdb737184d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eExpirationBlock",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eFee",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogSetRemittance",
+          "type": "event"
+        },
+        "0x9207361cc2a04b9c7a06691df1eb87c6a63957ae88bf01d0d18c81e3d1272099": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogWithdraw",
+          "type": "event"
+        },
+        "0x89bdc19847a2b708945a2b395b8f8be7b0c4bc39b9958d47b23595af959e425d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeeWithdraw",
+          "type": "event"
+        },
+        "0xc2b63887a40047a024d87de89972173a52a7d88c77fb3f7979612aa75e4a0f37": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRefund",
+          "type": "event"
+        },
+        "0xe149139e745b87d23672d6d1bd3f9160008dc717a946188ef8c5155e4ee6b845": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "switchSetting",
+              "type": "bool"
+            }
+          ],
+          "name": "LogRunSwitch",
+          "type": "event"
+        },
+        "0x95a4124b32fadd40e6e63088992a62e3505e61d1683b783d03e575d7c1dfb967": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "oldOwner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewOwner",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x0112d51c4e7cd1417c96248cd0fa85b947a31800",
+      "updated_at": 1519870397691
+    },
+    "1520018385101": {
+      "events": {
+        "0x5f5a416e04c542735c9001478b8c8275ebe6e17e3327ce28b8321afdb737184d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eExpirationBlock",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eFee",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogSetRemittance",
+          "type": "event"
+        },
+        "0x9207361cc2a04b9c7a06691df1eb87c6a63957ae88bf01d0d18c81e3d1272099": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogWithdraw",
+          "type": "event"
+        },
+        "0x89bdc19847a2b708945a2b395b8f8be7b0c4bc39b9958d47b23595af959e425d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeeWithdraw",
+          "type": "event"
+        },
+        "0xc2b63887a40047a024d87de89972173a52a7d88c77fb3f7979612aa75e4a0f37": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRefund",
+          "type": "event"
+        },
+        "0xe149139e745b87d23672d6d1bd3f9160008dc717a946188ef8c5155e4ee6b845": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "switchSetting",
+              "type": "bool"
+            }
+          ],
+          "name": "LogRunSwitch",
+          "type": "event"
+        },
+        "0x95a4124b32fadd40e6e63088992a62e3505e61d1683b783d03e575d7c1dfb967": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "oldOwner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewOwner",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xce4b1d80af44b8bd7d7d882409f0511d2294ae31",
+      "updated_at": 1520018691370
+    },
+    "1520268305093": {
+      "events": {
+        "0x5f5a416e04c542735c9001478b8c8275ebe6e17e3327ce28b8321afdb737184d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eExpirationBlock",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eFee",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogSetRemittance",
+          "type": "event"
+        },
+        "0x9207361cc2a04b9c7a06691df1eb87c6a63957ae88bf01d0d18c81e3d1272099": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogWithdraw",
+          "type": "event"
+        },
+        "0x89bdc19847a2b708945a2b395b8f8be7b0c4bc39b9958d47b23595af959e425d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeeWithdraw",
+          "type": "event"
+        },
+        "0xc2b63887a40047a024d87de89972173a52a7d88c77fb3f7979612aa75e4a0f37": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRefund",
+          "type": "event"
+        },
+        "0xe149139e745b87d23672d6d1bd3f9160008dc717a946188ef8c5155e4ee6b845": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "switchSetting",
+              "type": "bool"
+            }
+          ],
+          "name": "LogRunSwitch",
+          "type": "event"
+        },
+        "0x95a4124b32fadd40e6e63088992a62e3505e61d1683b783d03e575d7c1dfb967": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "oldOwner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewOwner",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xf78dbc036e42d4311cc246d2ba21c2aca368ccee",
+      "updated_at": 1520268329284
+    },
+    "1520296660516": {
+      "events": {
+        "0x5f5a416e04c542735c9001478b8c8275ebe6e17e3327ce28b8321afdb737184d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eExpirationBlock",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eFee",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogSetRemittance",
+          "type": "event"
+        },
+        "0x9207361cc2a04b9c7a06691df1eb87c6a63957ae88bf01d0d18c81e3d1272099": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogWithdraw",
+          "type": "event"
+        },
+        "0x89bdc19847a2b708945a2b395b8f8be7b0c4bc39b9958d47b23595af959e425d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeeWithdraw",
+          "type": "event"
+        },
+        "0xc2b63887a40047a024d87de89972173a52a7d88c77fb3f7979612aa75e4a0f37": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRefund",
+          "type": "event"
+        },
+        "0xe149139e745b87d23672d6d1bd3f9160008dc717a946188ef8c5155e4ee6b845": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "switchSetting",
+              "type": "bool"
+            }
+          ],
+          "name": "LogRunSwitch",
+          "type": "event"
+        },
+        "0x95a4124b32fadd40e6e63088992a62e3505e61d1683b783d03e575d7c1dfb967": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "oldOwner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewOwner",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x274605d618d6a548c55bb4ec82cab1ea372f6a14",
+      "updated_at": 1520296824686
+    },
+    "1520347452269": {
+      "events": {
+        "0x5f5a416e04c542735c9001478b8c8275ebe6e17e3327ce28b8321afdb737184d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eExpirationBlock",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "eFee",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogSetRemittance",
+          "type": "event"
+        },
+        "0x9207361cc2a04b9c7a06691df1eb87c6a63957ae88bf01d0d18c81e3d1272099": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogWithdraw",
+          "type": "event"
+        },
+        "0x89bdc19847a2b708945a2b395b8f8be7b0c4bc39b9958d47b23595af959e425d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogFeeWithdraw",
+          "type": "event"
+        },
+        "0xc2b63887a40047a024d87de89972173a52a7d88c77fb3f7979612aa75e4a0f37": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "eSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eRemittee",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "eAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogRefund",
+          "type": "event"
+        },
+        "0xe149139e745b87d23672d6d1bd3f9160008dc717a946188ef8c5155e4ee6b845": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "switchSetting",
+              "type": "bool"
+            }
+          ],
+          "name": "LogRunSwitch",
+          "type": "event"
+        },
+        "0x95a4124b32fadd40e6e63088992a62e3505e61d1683b783d03e575d7c1dfb967": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "oldOwner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "LogNewOwner",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x1cbd5cdf3053af67b149b6777f384bcf08cf6406",
+      "updated_at": 1520347466155
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1520347466155
+}
